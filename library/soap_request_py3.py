@@ -144,7 +144,7 @@ def run_module():
     force_basic_auth = module.params['force_basic_auth']
 
     if module.check_mode:
-        return result
+        module.exit_json(**result)
 
     if module.params['method'] == 'GET':
         response_body, response_headers = get(url, headers, force_basic_auth, user, password)
